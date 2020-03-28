@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="action_settings">Settings</string>
+    <string name="checker_name">入住人</string>
+    <string name="phone_number">手机号</string>
+    <string name="ID_number">入住人</string>
+    <string name="rooms">所需房间</string>
+</resources>
