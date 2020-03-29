@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -17,8 +19,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -47,7 +51,10 @@ public class Work3Activity extends AppCompatActivity {
             }
         });
 
-
+        ActivityCompat.requestPermissions(this, new String[]{
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+        }, 10001);
     }
 
     @Override
@@ -168,15 +175,16 @@ public class Work3Activity extends AppCompatActivity {
     }
 
 
-    //点击按钮保存 大作
+    //点击按钮保存
 
     public void btn_save(View v) {
 
         try {
 
-            File file = new File(Environment.getExternalStorageDirectory().getPath(), "dazuo.png");
-
-            FileOutputStream fos = new FileOutputStream(file);
+            File file;
+            FileOutputStream fos;
+            file = new File(Environment.getExternalStorageDirectory().getPath(), "painting.png");
+            fos = new FileOutputStream(file);
 
             //参1:保存图片的格式   参数2:quality 质量
 
@@ -184,13 +192,20 @@ public class Work3Activity extends AppCompatActivity {
 
             fos.close();
 
-            Toast.makeText(getApplicationContext(), "sucess", 1).show();
+            Toast.makeText(getApplicationContext(), "sucess", Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
-
             e.printStackTrace();
-
         }
     }
 
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        if (grantResults.length == 0 || PackageManager.PERMISSION_GRANTED != grantResults[0]) {
+//            Toast.makeText(this,"你拒绝了权限，无法创建!",Toast.LENGTH_LONG).show();
+//        } else {
+//        //在这执行你创建文件的代码
+//        }
+//    }
 }
