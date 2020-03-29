@@ -85,7 +85,7 @@ public class Work3Activity extends AppCompatActivity {
         canvas = new Canvas(copyBimap);
 
         // [3.3]开始作画 当32行代码执行完毕后 白纸上就有内容了
-        canvas.drawBitmap(srcBitmap, new Matrix(), paint);
+//        canvas.drawBitmap(copyBimap, new Matrix(), paint);
 
         // [3.4]画一条线 线由2个点确定一条线
 
