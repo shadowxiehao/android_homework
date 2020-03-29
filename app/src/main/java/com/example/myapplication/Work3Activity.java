@@ -10,6 +10,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,6 +35,8 @@ public class Work3Activity extends AppCompatActivity {
     Bitmap copyBimap;
     Paint paint;
     Canvas canvas;
+    int color_flag=0;
+    int bold_flag=8;
 
     @Override
 
@@ -55,18 +58,18 @@ public class Work3Activity extends AppCompatActivity {
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE
         }, 10001);
+
+
+
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         // [1]找到iv 用来展示我们画的内容
-
         iv = (ImageView) findViewById(R.id.iv_db);
 
-
         // [2]先获取bg.png的原图
-
         srcBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.drawboard);
 
         copyBimap = Bitmap.createBitmap(iv.getWidth(),
@@ -76,15 +79,12 @@ public class Work3Activity extends AppCompatActivity {
 //                                srcBitmap.getHeight(), srcBitmap.getConfig());
 
         // [3.1]创建画笔类
-
         paint = new Paint();
-
+        paint.setStrokeWidth(bold_flag);
         // [3.2]创建一个画布类 相当于把白纸铺到了画布上
-
         canvas = new Canvas(copyBimap);
 
         // [3.3]开始作画 当32行代码执行完毕后 白纸上就有内容了
-
         canvas.drawBitmap(srcBitmap, new Matrix(), paint);
 
         // [3.4]画一条线 线由2个点确定一条线
@@ -92,7 +92,6 @@ public class Work3Activity extends AppCompatActivity {
         // canvas.drawLine(20, 30, 40, 70, paint);
 
         // [4]把质的内容展示到iv上
-
         iv.setImageBitmap(copyBimap);
 
         // [5]给iv设置触摸事件
@@ -111,7 +110,6 @@ public class Work3Activity extends AppCompatActivity {
                     case MotionEvent.ACTION_DOWN: // 按下
 
                         // [7]获取手指按下的坐标
-
                         startX = event.getX();
                         startY = event.getY();
 
@@ -145,67 +143,80 @@ public class Work3Activity extends AppCompatActivity {
                     case MotionEvent.ACTION_UP: // 抬起
                         break;
                 }
-
-
                 // 如果返回值是true 当前监听器对象会消费掉
-
                 return true;
 
             }
-
         });
     }
 
-
     // 点击按钮让画笔变红色
-
     public void btn_color(View v) {
-
-        paint.setColor(Color.RED);
-
+        ++color_flag;
+        if(color_flag%4==0) {
+            paint.setColor(Color.BLACK);
+        }
+        if(color_flag%4==1) {
+            paint.setColor(Color.BLUE);
+        }
+        if(color_flag%4==2) {
+            paint.setColor(Color.YELLOW);
+        }
+        if(color_flag%4==3) {
+            paint.setColor(Color.RED);
+        }
     }
 
-
-    // 点击按钮让画笔加粗
-
+    // 点击按钮让画笔加粗,超过40还原
     public void btn_bold(View v) {
-
-        paint.setStrokeWidth(19);
-
+        if(bold_flag>40){
+        bold_flag=8;
+        }else{
+            bold_flag += 3;
+            paint.setStrokeWidth(bold_flag);
+        }
     }
-
 
     //点击按钮保存
 
     public void btn_save(View v) {
-
         try {
-
-            File file;
             FileOutputStream fos;
-            file = new File(Environment.getExternalStorageDirectory().getPath(), "painting.png");
-            fos = new FileOutputStream(file);
+            Log.d("Path",Environment.getExternalStorageDirectory().getPath()) ;
+//            file = new File(Environment.getDataDirectory().getPath(), "painting.png");
+            File folder=new File(Environment.getExternalStorageDirectory().getPath()+"/mytestapp");
+            //先判断目录是否存在,不存在则创建
+            if(!folder.exists())
+            {
+                Log.d("File Detect","nofile");
+                Log.d("MakeDirReault",""+folder.mkdirs());
+            }
+            File file = new File(Environment.getExternalStorageDirectory().getPath()+"/mytestapp","painting.png");
+
+            //创建保存文件流
+            Log.d("FilePath",file.getPath()+" "+file.getAbsolutePath());
+            fos = new FileOutputStream(file.getPath());
 
             //参1:保存图片的格式   参数2:quality 质量
 
             copyBimap.compress(Bitmap.CompressFormat.PNG, 100, fos);
-
+            fos.flush();
             fos.close();
 
-            Toast.makeText(getApplicationContext(), "sucess", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "保存成功,存储位置:"+Environment.getExternalStorageDirectory().getPath()+"/mytestapp/painting.png", Toast.LENGTH_LONG).show();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        if (grantResults.length == 0 || PackageManager.PERMISSION_GRANTED != grantResults[0]) {
-//            Toast.makeText(this,"你拒绝了权限，无法创建!",Toast.LENGTH_LONG).show();
-//        } else {
-//        //在这执行你创建文件的代码
-//        }
-//    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (grantResults.length == 0 || PackageManager.PERMISSION_GRANTED != grantResults[0]) {
+            Toast.makeText(this,"你拒绝了权限，无法创建!",Toast.LENGTH_LONG).show();
+        } else {
+        //在这执行你创建文件的代码
+        }
+    }
 }
