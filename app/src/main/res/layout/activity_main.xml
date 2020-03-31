@@ -37,32 +37,41 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/im1"
+                    android:id="@+id/bt1"
                     android:layout_width="match_parent"
                     android:layout_height="175dp"
                     android:layout_weight="1"
                     android:height="170dp"
                     android:background="@drawable/roadletterbox"
                     android:maxHeight="170dp"
-                    android:text="作业1"
+                    android:text="作业1-入住登记"
                     android:textSize="30sp" />
 
                 <Button
-                    android:id="@+id/im2"
+                    android:id="@+id/bt2"
                     android:layout_width="match_parent"
                     android:layout_height="175dp"
                     android:layout_weight="1"
                     android:background="@drawable/colorful"
-                    android:text="作业2"
+                    android:text="作业2-书栏"
                     android:textSize="30sp" />
 
                 <Button
-                    android:id="@+id/im3"
+                    android:id="@+id/bt3"
                     android:layout_width="match_parent"
                     android:layout_height="175dp"
                     android:layout_weight="1"
                     android:background="@drawable/purple"
-                    android:text="作业3"
+                    android:text="作业3-画板"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/bt4"
+                    android:layout_width="match_parent"
+                    android:layout_height="175dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/colors"
+                    android:text="作业4-登录"
                     android:textSize="30sp" />
             </LinearLayout>
         </ScrollView>
