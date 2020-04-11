@@ -171,8 +171,7 @@ public class Work2Activity extends AppCompatActivity {
             }
         });
 
-
-
     }
+
 
 }

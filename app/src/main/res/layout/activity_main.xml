@@ -6,30 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#6B5ADBDB"
-        android:gravity="center"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="47dp"
-            android:background="#D863B8FF"
-            app:collapseIcon="@android:drawable/btn_radio"
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:background="#D863B8FF"
+                app:collapseIcon="@android:drawable/btn_radio"
 
-            app:collapsedTitleGravity="center"
+                app:collapsedTitleGravity="center"
 
-            app:navigationIcon="?attr/actionModeCloseDrawable"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="作业" />
+                app:navigationIcon="?attr/actionModeCloseDrawable"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:title="作业" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fadingEdge="vertical"
+            android:scrollbars="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -73,11 +74,20 @@
                     android:background="@drawable/colors"
                     android:text="作业4-登录"
                     android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/bt5"
+                    android:layout_width="match_parent"
+                    android:layout_height="175dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/colorful"
+                    android:text="作业5-数据库"
+                    android:textSize="30sp" />
             </LinearLayout>
         </ScrollView>
+    </LinearLayout>
 
 
-    </com.google.android.material.appbar.AppBarLayout>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
