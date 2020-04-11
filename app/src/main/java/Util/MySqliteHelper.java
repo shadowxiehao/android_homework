@@ -66,6 +66,6 @@ public class MySqliteHelper extends SQLiteOpenHelper {
      * 查询数据。
      */
     public Cursor search(String arg) {
-        return getReadableDatabase().rawQuery("select * from Staff Where name like ? OR salary like ? OR depart like ?", new String[]{"%"+arg+"%"});
+        return getReadableDatabase().rawQuery("select * from Staff Where name like ? OR salary like ? OR depart like ?", new String[]{"%"+arg+"%","%"+arg+"%","%"+arg+"%"});
     }
 }
