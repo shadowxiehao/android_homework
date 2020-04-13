@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class MySqliteHelper extends SQLiteOpenHelper {
+public class MySqliteHelper5 extends SQLiteOpenHelper {
     // final String
     // CREATE_TABLE_SQL="create table myTable(_id integer primary key autoincrement,name,phone,mobile,email,post,addr,comp)";//创建数据表myTable
     // public static final String DB_NAME="personal_contacts";
@@ -18,7 +18,7 @@ public class MySqliteHelper extends SQLiteOpenHelper {
     public static final String DEPART = "depart";
     private SQLiteDatabase sqLiteDatabase;
 
-    public MySqliteHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public MySqliteHelper5(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
         // TODO Auto-generated constructor stub
         sqLiteDatabase=getWritableDatabase();

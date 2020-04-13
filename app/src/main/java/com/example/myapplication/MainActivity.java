@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import Util.CommonUtil;
@@ -42,6 +43,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
             }
         });
+        //设置toolbar右边的用户名
+        String email_save= CommonUtil.getSettingNote(MainActivity.this, "userinfo", "uemail");
+        String log_state= CommonUtil.getSettingNote(MainActivity.this, "userinfo", "state");
+        TextView tv_username = (TextView)findViewById(R.id.tv_username);
+        if(email_save!=null&&log_state!=null&&log_state.equals("true")){
+            tv_username.setText(email_save);
+        }else {
+            tv_username.setText("未登录");
+        }
+
         //申请读写权限
         ActivityCompat.requestPermissions(this, new String[]{
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -68,9 +79,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Bundle bundle = intent.getExtras();
             //通过bundle对象和key值获得传递进来的数据 
             String state = bundle.getString("state");
+            String username = bundle.getString("username");
             Log.d("state",state);
             if (state.equals("login")) {
-                Toast.makeText(MainActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "欢迎回来,"+username, Toast.LENGTH_SHORT).show();
             } else if (state.equals("logout")) {
                 Toast.makeText(MainActivity.this, "注销成功", Toast.LENGTH_SHORT).show();
             }

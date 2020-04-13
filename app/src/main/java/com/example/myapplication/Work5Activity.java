@@ -1,38 +1,32 @@
 package com.example.myapplication;
 
 import android.Manifest;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 
 import Data.Staff_info;
-import Util.MySqliteHelper;
+import Util.MySqliteHelper5;
 
 public class Work5Activity extends AppCompatActivity {
-    private MySqliteHelper msh;
+    private MySqliteHelper5 msh;
     private SQLiteDatabase sd;
     private ArrayList<Staff_info> StaffList;
     private ListView lv;
@@ -60,7 +54,7 @@ public class Work5Activity extends AppCompatActivity {
         }, 10001);
 
         //初始化数据库类
-        msh = new MySqliteHelper(this, "student.db", null, 2);
+        msh = new MySqliteHelper5(this, "student.db", null, 2);
 
         //获取数据库数据存入arraylist
         StaffList = getALData();

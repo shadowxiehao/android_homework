@@ -13,17 +13,30 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:background="#D863B8FF"
-                app:collapseIcon="@android:drawable/btn_radio"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:background="#D863B8FF"
+            app:collapseIcon="@android:drawable/btn_radio"
 
-                app:collapsedTitleGravity="center"
+            app:collapsedTitleGravity="center"
 
-                app:navigationIcon="?attr/actionModeCloseDrawable"
-                app:popupTheme="@style/AppTheme.PopupOverlay"
-                app:title="作业" />
+            app:navigationIcon="?attr/actionModeCloseDrawable"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="作业">
+
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="TextView"
+                android:textSize="12sp" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
 
         <ScrollView
             android:layout_width="match_parent"
@@ -46,7 +59,7 @@
                     android:background="@drawable/roadletterbox"
                     android:maxHeight="170dp"
                     android:text="作业1-入住登记"
-                    android:textSize="30sp" />
+                    android:textSize="27sp" />
 
                 <Button
                     android:id="@+id/bt2"
@@ -55,7 +68,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/colorful"
                     android:text="作业2-书栏"
-                    android:textSize="30sp" />
+                    android:textSize="27sp" />
 
                 <Button
                     android:id="@+id/bt3"
@@ -64,7 +77,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/purple"
                     android:text="作业3-画板"
-                    android:textSize="30sp" />
+                    android:textSize="27sp" />
 
                 <Button
                     android:id="@+id/bt4"
@@ -72,8 +85,8 @@
                     android:layout_height="175dp"
                     android:layout_weight="1"
                     android:background="@drawable/colors"
-                    android:text="作业4-登录"
-                    android:textSize="30sp" />
+                    android:text="作业4&amp;6-登录与跳转"
+                    android:textSize="27sp" />
 
                 <Button
                     android:id="@+id/bt5"
@@ -82,7 +95,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/colorful"
                     android:text="作业5-数据库"
-                    android:textSize="30sp" />
+                    android:textSize="27sp" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

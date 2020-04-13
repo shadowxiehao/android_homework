@@ -114,8 +114,10 @@ public class Work4Activity extends AppCompatActivity implements View.OnClickList
         }else{
             if(auto_login.isChecked()){
                 Toast.makeText(Work4Activity.this, "自动登录中", Toast.LENGTH_SHORT).show();
+                String email_save= CommonUtil.getSettingNote(Work4Activity.this, "userinfo", "uemail");
                 Intent intenti = new Intent(this,MainActivity.class);
                 intenti.putExtra("state", "login");
+                intenti.putExtra("username", email_save);
                 map.put("state", "true");
                 CommonUtil.saveSettingNote(Work4Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
                 startActivity(intenti);
@@ -141,7 +143,9 @@ public class Work4Activity extends AppCompatActivity implements View.OnClickList
                 }
                 if(email_save!=null&&pwd_save!=null&&email_save.equals(email.getText().toString())&&pwd_save.equals(pwd.getText().toString())) {
                     Intent intenti = new Intent(this,MainActivity.class);
+                    //跳转时提示主界面当前的用户已登录和用户名
                     intenti.putExtra("state", "login");
+                    intenti.putExtra("username", email_save);
                     map.put("state", "true");
                     CommonUtil.saveSettingNote(Work4Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
                     startActivity(intenti);
