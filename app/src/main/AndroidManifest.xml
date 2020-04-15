@@ -42,7 +42,7 @@
 
         </activity>
         <activity
-            android:name=".Work4Activity"
+            android:name=".Work4_6Activity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
 
@@ -53,7 +53,13 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
+        <activity
+            android:name=".Work7Activity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
 
+        </activity>
+        <service android:name="Service.ClockService" />
     </application>
 
 </manifest>

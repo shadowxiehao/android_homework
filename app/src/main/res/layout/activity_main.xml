@@ -96,6 +96,15 @@
                     android:background="@drawable/colorful"
                     android:text="作业5-数据库"
                     android:textSize="27sp" />
+
+                <Button
+                    android:id="@+id/bt6"
+                    android:layout_width="match_parent"
+                    android:layout_height="175dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/purple"
+                    android:text="作业6-倒计时"
+                    android:textSize="27sp" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

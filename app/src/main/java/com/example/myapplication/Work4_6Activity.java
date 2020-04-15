@@ -1,14 +1,11 @@
 package com.example.myapplication;
 
 import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,13 +13,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -30,7 +24,7 @@ import java.util.regex.Pattern;
 
 import Util.CommonUtil;
 
-public class Work4Activity extends AppCompatActivity implements View.OnClickListener{
+public class Work4_6Activity extends AppCompatActivity implements View.OnClickListener{
     String login_state=null;
     Button btn_login;
     Button btn_logout;
@@ -46,7 +40,7 @@ public class Work4Activity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.work4);
+        setContentView(R.layout.work4_6);
 
         //设置toolbar
         Toolbar toolbar = findViewById(R.id.toolbar4);
@@ -54,7 +48,7 @@ public class Work4Activity extends AppCompatActivity implements View.OnClickList
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Work4Activity.this,MainActivity.class);
+                Intent intent = new Intent(Work4_6Activity.this,MainActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -84,10 +78,10 @@ public class Work4Activity extends AppCompatActivity implements View.OnClickList
         btn_signup.setOnClickListener(this);
 
         //自动填写信息
-        String auto_email = CommonUtil.getSettingNote(Work4Activity.this, "userinfo", "uemail");
-        String auto_pwd = CommonUtil.getSettingNote(Work4Activity.this, "userinfo", "upwd");
-        String remember_state = CommonUtil.getSettingNote(Work4Activity.this, "userinfo", "remember");
-        String autologin_state = CommonUtil.getSettingNote(Work4Activity.this, "userinfo", "auto_login");
+        String auto_email = CommonUtil.getSettingNote(Work4_6Activity.this, "userinfo", "uemail");
+        String auto_pwd = CommonUtil.getSettingNote(Work4_6Activity.this, "userinfo", "upwd");
+        String remember_state = CommonUtil.getSettingNote(Work4_6Activity.this, "userinfo", "remember");
+        String autologin_state = CommonUtil.getSettingNote(Work4_6Activity.this, "userinfo", "auto_login");
         //将勾选框状态补回去
         if(remember_state!=null&&remember_state.equals("true")){
             remember.setChecked(true);
@@ -105,25 +99,25 @@ public class Work4Activity extends AppCompatActivity implements View.OnClickList
         }
 
         //读取登录状态
-        login_state= CommonUtil.getSettingNote(Work4Activity.this, "userinfo", "state");
+        login_state= CommonUtil.getSettingNote(Work4_6Activity.this, "userinfo", "state");
         Log.d("4_state","---"+login_state+"---");
         if(login_state==null){
-            Toast.makeText(Work4Activity.this,"尚未登录",Toast.LENGTH_SHORT).show();
+            Toast.makeText(Work4_6Activity.this,"尚未登录",Toast.LENGTH_SHORT).show();
         } else if(login_state.equals("true")){
-            Toast.makeText(Work4Activity.this,"您已登录",Toast.LENGTH_SHORT).show();
+            Toast.makeText(Work4_6Activity.this,"您已登录",Toast.LENGTH_SHORT).show();
         }else{
             if(auto_login.isChecked()){
-                Toast.makeText(Work4Activity.this, "自动登录中", Toast.LENGTH_SHORT).show();
-                String email_save= CommonUtil.getSettingNote(Work4Activity.this, "userinfo", "uemail");
+                Toast.makeText(Work4_6Activity.this, "自动登录中", Toast.LENGTH_SHORT).show();
+                String email_save= CommonUtil.getSettingNote(Work4_6Activity.this, "userinfo", "uemail");
                 Intent intenti = new Intent(this,MainActivity.class);
                 intenti.putExtra("state", "login");
                 intenti.putExtra("username", email_save);
                 map.put("state", "true");
-                CommonUtil.saveSettingNote(Work4Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
+                CommonUtil.saveSettingNote(Work4_6Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
                 startActivity(intenti);
                 finish();
             }else {
-                Toast.makeText(Work4Activity.this, "尚未登录", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Work4_6Activity.this, "尚未登录", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -133,8 +127,8 @@ public class Work4Activity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_login:
-                String email_save= CommonUtil.getSettingNote(Work4Activity.this, "userinfo", "uemail");
-                String pwd_save= CommonUtil.getSettingNote(Work4Activity.this, "userinfo", "upwd");
+                String email_save= CommonUtil.getSettingNote(Work4_6Activity.this, "userinfo", "uemail");
+                String pwd_save= CommonUtil.getSettingNote(Work4_6Activity.this, "userinfo", "upwd");
                 try {
                     Log.d("email_save", email_save);
                     Log.d("pwd_save", pwd_save);
@@ -147,16 +141,16 @@ public class Work4Activity extends AppCompatActivity implements View.OnClickList
                     intenti.putExtra("state", "login");
                     intenti.putExtra("username", email_save);
                     map.put("state", "true");
-                    CommonUtil.saveSettingNote(Work4Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
+                    CommonUtil.saveSettingNote(Work4_6Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
                     startActivity(intenti);
                     finish();
                 }else{
-                    Toast.makeText(Work4Activity.this,"用户名或密码错误",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Work4_6Activity.this,"用户名或密码错误",Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btn_logout:
                 map.put("state", "flase");
-                CommonUtil.saveSettingNote(Work4Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
+                CommonUtil.saveSettingNote(Work4_6Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
                 Intent intento = new Intent(this,MainActivity.class);
                 intento.putExtra("state", "logout");
                 startActivity(intento);
@@ -170,33 +164,33 @@ public class Work4Activity extends AppCompatActivity implements View.OnClickList
                 boolean flag = matcher.matches();
                 if(!flag){
                     //邮箱格式错误
-                    Toast.makeText(Work4Activity.this,"邮箱格式错误",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Work4_6Activity.this,"邮箱格式错误",Toast.LENGTH_SHORT).show();
                 }else {
                     //开始本地注册
                     map.put("uemail", email.getText().toString());
                     Log.d("emailn", email.getText().toString());
                     map.put("upwd", pwd.getText().toString());
                     Log.d("pswn", pwd.getText().toString());
-                    CommonUtil.saveSettingNote(Work4Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
-                    Toast.makeText(Work4Activity.this, "注册成功", Toast.LENGTH_SHORT).show();
+                    CommonUtil.saveSettingNote(Work4_6Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
+                    Toast.makeText(Work4_6Activity.this, "注册成功", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.remember:
                 if(remember.isChecked()) {
                     map.put("remember", "true");
-                    CommonUtil.saveSettingNote(Work4Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
+                    CommonUtil.saveSettingNote(Work4_6Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
                 }else {
                     map.put("remember", "false");
-                    CommonUtil.saveSettingNote(Work4Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
+                    CommonUtil.saveSettingNote(Work4_6Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
                 }
                 break;
             case R.id.autologin:
                 if(auto_login.isChecked()) {
                     map.put("auto_login", "true");
-                    CommonUtil.saveSettingNote(Work4Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
+                    CommonUtil.saveSettingNote(Work4_6Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
                 }else {
                     map.put("auto_login", "false");
-                    CommonUtil.saveSettingNote(Work4Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
+                    CommonUtil.saveSettingNote(Work4_6Activity.this, "userinfo", map);//参数（上下文，userinfo为文件名，需要保存的数据）
                 }
                 break;
         }
@@ -206,7 +200,7 @@ public class Work4Activity extends AppCompatActivity implements View.OnClickList
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         //点击返回键
         if(keyCode== KeyEvent.KEYCODE_BACK){
-            Intent intent = new Intent(Work4Activity.this,MainActivity.class);
+            Intent intent = new Intent(Work4_6Activity.this,MainActivity.class);
             startActivity(intent);
             finish();
         }

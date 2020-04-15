@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -17,7 +16,6 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button button_3;
     Button button_4;
     Button button_5;
+    Button button_6;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button_4.setOnClickListener(this);
         button_5 = findViewById(R.id.bt5);
         button_5.setOnClickListener(this);
+        button_6 = findViewById(R.id.bt6);
+        button_6.setOnClickListener(this);
         //当第四个登录信息传来时显示
         try {
             //接收数据时需新建intent对象，获得intent
@@ -135,13 +136,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent3);
                 break;
             case R.id.bt4:
-                Intent intent4=new Intent(MainActivity.this,Work4Activity.class);
+                Intent intent4=new Intent(MainActivity.this, Work4_6Activity.class);
                 startActivity(intent4);
                 finish();
                 break;
             case R.id.bt5:
                 Intent intent5=new Intent(MainActivity.this,Work5Activity.class);
                 startActivity(intent5);
+                break;
+            case R.id.bt6:
+                Intent intent6=new Intent(MainActivity.this, Work7Activity.class);
+                startActivity(intent6);
                 break;
         }
     }
