@@ -110,6 +110,7 @@ public class Work7Activity extends AppCompatActivity {
     public void add30(View view){
         Log.d("按钮点击","add30");
         TIME+=30*60*1000;
+        changeTime();
     }
     public void reset(View view){
         Log.d("按钮点击","reset");
@@ -118,6 +119,7 @@ public class Work7Activity extends AppCompatActivity {
         intent.putExtra("method","pause");
         super.sendBroadcast(intent);
         TIME=3*60*60*1000;
+        changeTime();
     }
     public void minus30(View view){
         Log.d("按钮点击","minus30");
@@ -130,6 +132,7 @@ public class Work7Activity extends AppCompatActivity {
             TIME = 3 * 60 * 60 * 1000;
             super.sendBroadcast(intent);
         }
+        changeTime();
     }
 }
 

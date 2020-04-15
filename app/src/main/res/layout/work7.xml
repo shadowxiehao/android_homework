@@ -46,41 +46,52 @@
 
         <Button
             android:id="@+id/btStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100sp"
+            android:layout_height="50sp"
             android:layout_gravity="center"
+            android:alpha="0.8"
+            android:background="@drawable/lightblue1"
             android:onClick="restart"
             android:text="开始" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
             android:gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btAdd30"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="75sp"
+                android:layout_height="50sp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:alpha="0.8"
+                android:background="@drawable/orangecyan1"
+                android:gravity="center"
                 android:onClick="add30"
                 android:text="+30分钟" />
 
             <Button
                 android:id="@+id/btReset"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100sp"
+                android:layout_height="50sp"
                 android:layout_gravity="center"
+                android:alpha="0.8"
+                android:background="@drawable/orangecyan1"
                 android:onClick="reset"
                 android:text="重置" />
 
             <Button
                 android:id="@+id/btMinus30"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="75sp"
+                android:layout_height="50sp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:alpha="0.8"
+                android:background="@drawable/orangecyan2"
                 android:onClick="minus30"
                 android:text="-30分钟" />
 
@@ -88,9 +99,11 @@
 
         <Button
             android:id="@+id/btStop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100sp"
+            android:layout_height="50sp"
             android:layout_gravity="center"
+            android:alpha="0.8"
+            android:background="@drawable/lightblue1"
             android:onClick="pause"
             android:text="停止" />
 
