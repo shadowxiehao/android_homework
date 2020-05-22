@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button button_3;
     Button button_4;
     Button button_5;
-    Button button_6;
+    Button button_7;
+    Button button_8;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,8 +71,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button_4.setOnClickListener(this);
         button_5 = findViewById(R.id.bt5);
         button_5.setOnClickListener(this);
-        button_6 = findViewById(R.id.bt6);
-        button_6.setOnClickListener(this);
+        button_7 = findViewById(R.id.bt7);
+        button_7.setOnClickListener(this);
+        button_8 = findViewById(R.id.bt8);
+        button_8.setOnClickListener(this);
         //当第四个登录信息传来时显示
         try {
             //接收数据时需新建intent对象，获得intent
@@ -144,9 +147,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent5=new Intent(MainActivity.this,Work5Activity.class);
                 startActivity(intent5);
                 break;
-            case R.id.bt6:
-                Intent intent6=new Intent(MainActivity.this, Work7Activity.class);
-                startActivity(intent6);
+            case R.id.bt7:
+                Intent intent7=new Intent(MainActivity.this, Work7Activity.class);
+                startActivity(intent7);
+                break;
+            case R.id.bt8:
+                Intent intent8=new Intent(MainActivity.this, Work8Activity.class);
+                startActivity(intent8);
                 break;
         }
     }

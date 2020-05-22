@@ -40,7 +40,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="搜索内容" />
+                android:hint="搜索内容"
+                />
 
             <Button
                 android:id="@+id/btn_search"

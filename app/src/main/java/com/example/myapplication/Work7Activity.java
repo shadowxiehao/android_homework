@@ -35,7 +35,7 @@ public class Work7Activity extends AppCompatActivity {
             }
         });
         tvClock=(TextView)super.findViewById(R.id.tvClock);
-        regReceiver();//注册广播
+        regReceiver();//注册广播接收
         startService(new Intent(this, ClockService.class));//启动计时服务
     }
 

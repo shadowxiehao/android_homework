@@ -91,7 +91,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="7"
                 android:inputType="textPersonName"
-                android:text="举例:张三"
+                android:hint="举例:张三"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/note"
                 android:textSize="@dimen/text_size" />
@@ -123,7 +123,7 @@
                 android:layout_weight="7"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="请输入身份证号"
+                android:hint="请输入身份证号"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
 
                 android:textColor="@color/note" />

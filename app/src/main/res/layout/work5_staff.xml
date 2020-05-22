@@ -22,7 +22,7 @@
             android:textSize="20dp"
             android:gravity="center"
             android:layout_weight="1"
-            android:text="名字"
+            android:hint="名字"
             android:layout_width="0dp"
             android:layout_height="50dp" />
         <EditText
@@ -30,7 +30,7 @@
             android:textSize="20dp"
             android:gravity="center"
             android:layout_weight="1"
-            android:text="工资"
+            android:hint="工资"
             android:layout_width="0dp"
             android:layout_height="50dp" />
         <EditText
@@ -38,7 +38,7 @@
             android:textSize="20dp"
             android:gravity="center"
             android:layout_weight="1"
-            android:text="部门"
+            android:hint="部门"
             android:layout_width="0dp"
             android:layout_height="50dp" />
 
